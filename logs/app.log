@@ -1,0 +1,33 @@
+2024-10-06T18:40:17.383+05:30  INFO 11132 --- [library-management-api] [main] c.e.l.l.LibraryManagementApiApplication  : Starting LibraryManagementApiApplication using Java 22.0.2 with PID 11132 (D:\coding\LIbrary API\API\library-management-api\target\classes started by raghu in D:\coding\LIbrary API\API\library-management-api)
+2024-10-06T18:40:17.385+05:30  INFO 11132 --- [library-management-api] [main] c.e.l.l.LibraryManagementApiApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-10-06T18:40:17.997+05:30  INFO 11132 --- [library-management-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-10-06T18:40:18.010+05:30  INFO 11132 --- [library-management-api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-06T18:40:18.012+05:30  INFO 11132 --- [library-management-api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-06T18:40:18.053+05:30  INFO 11132 --- [library-management-api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-06T18:40:18.054+05:30  INFO 11132 --- [library-management-api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 637 ms
+2024-10-06T18:40:18.278+05:30  INFO 11132 --- [library-management-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-10-06T18:40:18.283+05:30  INFO 11132 --- [library-management-api] [main] c.e.l.l.LibraryManagementApiApplication  : Started LibraryManagementApiApplication in 1.244 seconds (process running for 1.454)
+2024-10-06T18:40:24.397+05:30  INFO 11132 --- [library-management-api] [http-nio-8080-exec-7] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-06T18:40:24.398+05:30  INFO 11132 --- [library-management-api] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-10-06T18:40:24.399+05:30  INFO 11132 --- [library-management-api] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-10-06T18:42:53.202+05:30  INFO 19468 --- [library-management-api] [main] c.e.l.l.LibraryManagementApiApplication  : Starting LibraryManagementApiApplication using Java 22.0.2 with PID 19468 (D:\coding\LIbrary API\API\library-management-api\target\classes started by raghu in D:\coding\LIbrary API\API\library-management-api)
+2024-10-06T18:42:53.202+05:30  INFO 19468 --- [library-management-api] [main] c.e.l.l.LibraryManagementApiApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-10-06T18:42:53.767+05:30  INFO 19468 --- [library-management-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-10-06T18:42:53.777+05:30  INFO 19468 --- [library-management-api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-06T18:42:53.778+05:30  INFO 19468 --- [library-management-api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-06T18:42:53.814+05:30  INFO 19468 --- [library-management-api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-06T18:42:53.815+05:30  INFO 19468 --- [library-management-api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 582 ms
+2024-10-06T18:42:54.034+05:30  INFO 19468 --- [library-management-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-10-06T18:42:54.039+05:30  INFO 19468 --- [library-management-api] [main] c.e.l.l.LibraryManagementApiApplication  : Started LibraryManagementApiApplication in 1.184 seconds (process running for 1.392)
+2024-10-06T18:47:55.192+05:30  INFO 22256 --- [library-management-api] [main] c.e.l.l.LibraryManagementApiApplication  : Starting LibraryManagementApiApplication using Java 22.0.2 with PID 22256 (D:\coding\LIbrary API\API\library-management-api\target\classes started by raghu in D:\coding\LIbrary API\API\library-management-api)
+2024-10-06T18:47:55.194+05:30  INFO 22256 --- [library-management-api] [main] c.e.l.l.LibraryManagementApiApplication  : No active profile set, falling back to 1 default profile: "default"
+2024-10-06T18:47:55.761+05:30  INFO 22256 --- [library-management-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-10-06T18:47:55.772+05:30  INFO 22256 --- [library-management-api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-06T18:47:55.773+05:30  INFO 22256 --- [library-management-api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-06T18:47:55.809+05:30  INFO 22256 --- [library-management-api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-06T18:47:55.809+05:30  INFO 22256 --- [library-management-api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 582 ms
+2024-10-06T18:47:56.031+05:30  INFO 22256 --- [library-management-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-10-06T18:47:56.036+05:30  INFO 22256 --- [library-management-api] [main] c.e.l.l.LibraryManagementApiApplication  : Started LibraryManagementApiApplication in 1.191 seconds (process running for 1.403)
+2024-10-06T18:48:02.286+05:30  INFO 22256 --- [library-management-api] [http-nio-8080-exec-7] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-06T18:48:02.287+05:30  INFO 22256 --- [library-management-api] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-10-06T18:48:02.288+05:30  INFO 22256 --- [library-management-api] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
