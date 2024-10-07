@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,21 +17,19 @@ import com.example.libraryapi.library_management_api.api.model.Borrowing;
 import com.example.libraryapi.library_management_api.api.model.User;
 @Service
 public class BorrowingService {
-    private final Properties props = new Properties();
-     @Autowired
+    private final DBCredentials dbCredentials;
+    @Autowired
     private UserService userService;
     @Autowired
     private BookService bookService;
-    public BorrowingService() {
-        props.setProperty("user", "SYS");
-        props.setProperty("password", "Raghushree2005");
-        props.setProperty("internal_logon", "SYSDBA");
+    @Autowired
+    public BorrowingService(DBCredentials dbCredentials) {
+        this.dbCredentials = dbCredentials;
     }
-
     public boolean createBorrowing(Borrowing borrowing) {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 String sql = "INSERT INTO borrowings (regno, bookid) VALUES (?, ?)";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
                     statement.setInt(1, borrowing.getRegno());
@@ -51,7 +48,7 @@ public class BorrowingService {
         List<Borrowing> borrowings = new ArrayList<>();
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 String sql = "SELECT regno, bookid FROM borrowings";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
                     ResultSet resultSet = statement.executeQuery();
@@ -73,7 +70,7 @@ public class BorrowingService {
     public Optional<HashMap<User,ArrayList<Book>>> getBorrowing(int regno){
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 String sql = "SELECT bookid FROM borrowings WHERE regno = ?";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
                     statement.setInt(1, regno);
@@ -103,7 +100,7 @@ public class BorrowingService {
     public boolean deleteBorrowing(int regno, int bookid) {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 String sql = "DELETE FROM borrowings WHERE regno = ? AND bookid = ?";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
                     statement.setInt(1, regno);

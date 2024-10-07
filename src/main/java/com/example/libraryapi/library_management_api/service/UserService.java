@@ -7,24 +7,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.libraryapi.library_management_api.api.model.User;
 @Service
 public class UserService {
-    private final Properties props = new Properties();
-    public UserService(){
-        props.setProperty("user", "SYS");
-        props.setProperty("password", "Raghushree2005");
-        props.setProperty("internal_logon", "SYSDBA");
+    private final DBCredentials dbCredentials;
+    @Autowired 
+    public UserService(DBCredentials dbCredentials){
+        this.dbCredentials = dbCredentials;
     }
     public Optional<User> getUser(int regno){
         Optional optional=Optional.empty();
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database");
                 String sql = "SELECT * FROM users WHERE regno = ?";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -49,7 +48,7 @@ public class UserService {
     public Boolean CreateUser(User user){
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database");
                 String sql = "Insert into users values(?,?,?)";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -69,7 +68,7 @@ public class UserService {
     public Boolean UpdateUser(Integer regno, User user) {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database");
                 String sql = "update users set regno=?,name=?,email=? where regno=?";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -89,7 +88,7 @@ public class UserService {
     public Boolean DeleteUser(int regno) {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database");
                 String sql = "delete from users where regno=?";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -108,7 +107,7 @@ public class UserService {
         Optional optional = Optional.empty();
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database");
                 String sql = "SELECT * FROM users";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {

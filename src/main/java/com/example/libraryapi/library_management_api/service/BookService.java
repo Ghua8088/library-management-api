@@ -8,21 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.libraryapi.library_management_api.api.model.Book;
 @Service
 public class BookService {
-    private final Properties props = new Properties();
-    public BookService(){
-        props.setProperty("user", "SYS");
-        props.setProperty("password", "Raghushree2005");
-        props.setProperty("internal_logon", "SYSDBA");    
+    private final DBCredentials dbCredentials;
+    @Autowired
+    public BookService(DBCredentials dbCredentials){
+        this.dbCredentials =dbCredentials;
     }
     public Optional<Book> getBook(int BookId){
         Optional optional=Optional.empty();
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database");
                 String sql = "SELECT * FROM books WHERE bookid = ?";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -48,7 +49,7 @@ public class BookService {
     public Boolean CreateBook(Book book){
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database");
                 String sql = "Insert into books values(?,?,?)";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -72,7 +73,7 @@ public class BookService {
     public Boolean UpdateBook(Integer BookId, Book book) {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database");
                 String sql = "update books set bookid=?,name=?,stock=? where bookid=?";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -92,7 +93,7 @@ public class BookService {
     public Boolean DeleteBook(int regno) {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database");
                 String sql = "delete from books where bookid=?";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -111,7 +112,7 @@ public class BookService {
         Optional optional = Optional.empty();
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
+            try (Connection connection = DriverManager.getConnection(dbCredentials.getUrl(),dbCredentials.getProperties())) {
                 System.out.println("Connected to the database"); 
                 String sql = "SELECT * FROM books";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
