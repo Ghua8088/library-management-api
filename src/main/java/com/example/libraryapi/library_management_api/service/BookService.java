@@ -112,7 +112,7 @@ public class BookService {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
             try (Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",props)) {
-                System.out.println("Connected to the database");
+                System.out.println("Connected to the database"); 
                 String sql = "SELECT * FROM books";
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
                     ResultSet resultSet = statement.executeQuery();

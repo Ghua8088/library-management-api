@@ -24,9 +24,9 @@ public class BookController {
         this.bookService = bookService;
     }
     @GetMapping("/book")
-    public ResponseEntity<Book> getBook(@RequestParam Integer BookId){
-        System.out.println("GET method called with regno: " + BookId);
-        Optional<Book> book=bookService.getBook(BookId);
+    public ResponseEntity<Book> getBook(@RequestParam Integer bookId){
+        System.out.println("GET method called with regno: " + bookId);
+        Optional<Book> book=bookService.getBook(bookId);
         if(book.isPresent()){
             return ResponseEntity.ok(book.get());
         }
@@ -49,9 +49,9 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
     }
     @DeleteMapping("/book")
-    public ResponseEntity<Book> DeleteBook(@RequestParam Integer BookId){
-        ResponseEntity<Book> Dlttuple=getBook(BookId);
-        Boolean deleted=bookService.DeleteBook(BookId);
+    public ResponseEntity<Book> DeleteBook(@RequestParam Integer bookId){
+        ResponseEntity<Book> Dlttuple=getBook(bookId);
+        Boolean deleted=bookService.DeleteBook(bookId);
         if (deleted) {
             return Dlttuple;
         }
